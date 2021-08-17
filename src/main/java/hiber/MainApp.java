@@ -4,9 +4,9 @@ import hiber.config.AppConfig;
 import hiber.model.Car;
 import hiber.model.User;
 import hiber.service.UserService;
+import hiber.service.UserServiceImp;
 import org.hibernate.Session;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class MainApp {
             new AnnotationConfigApplicationContext(AppConfig.class);
 
       UserService userService = context.getBean( UserService.class);
-
+      UserServiceImp usi = new UserServiceImp();
 
      // userService.add(car1);
       userService.add(new User("User1", "Lastname1", "user1@mail.ru", new Car("bmw", 5)));
@@ -34,8 +34,7 @@ public class MainApp {
          System.out.println("Series = " + user.getCar().getSeries());
          System.out.println();
       }
-
+     usi.getCar("bmw", 5);
       context.close();
    }
-
 }
