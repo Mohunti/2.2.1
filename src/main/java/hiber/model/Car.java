@@ -7,12 +7,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cars")
-@Component
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "car_id")
-    private int id;
+    private Long id;
 
     @Column(name= "model")
     private String model;
@@ -20,9 +19,20 @@ public class Car {
     @Column(name= "series")
     private int series;
 
+    @OneToOne(mappedBy = "car")
+    private User user;
+
     public Car(String model, int series) {
         this.model = model;
         this.series = series;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Car() {

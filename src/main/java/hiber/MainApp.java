@@ -1,6 +1,7 @@
 package hiber;
 
 import hiber.config.AppConfig;
+import hiber.dao.UserDaoImp;
 import hiber.model.Car;
 import hiber.model.User;
 import hiber.service.UserService;
@@ -16,7 +17,7 @@ public class MainApp {
             new AnnotationConfigApplicationContext(AppConfig.class);
 
       UserService userService = context.getBean( UserService.class);
-      UserServiceImp usi = new UserServiceImp();
+
 
      // userService.add(car1);
       userService.add(new User("User1", "Lastname1", "user1@mail.ru", new Car("bmw", 5)));
@@ -30,11 +31,9 @@ public class MainApp {
          System.out.println("First Name = "+user.getFirstName());
          System.out.println("Last Name = "+user.getLastName());
          System.out.println("Email = "+user.getEmail());
-         System.out.println("Model = " + user.getCar().getModel());
-         System.out.println("Series = " + user.getCar().getSeries());
          System.out.println();
       }
-     usi.getCar("bmw", 5);
+      System.out.println(userService.getCar("audi",7));
       context.close();
    }
 }

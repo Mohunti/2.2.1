@@ -21,6 +21,12 @@ public class UserServiceImp implements UserService {
     @Autowired
     private UserDao userDao;
 
+    @Transactional(readOnly = true)
+    @Override
+    public User getCar(String model, int series){
+        return  userDao.getCar(model,series);
+    }
+
     @Transactional
     @Override
     public void add(User user) {
@@ -33,12 +39,4 @@ public class UserServiceImp implements UserService {
         return userDao.listUsers();
     }
 
-
-    public User getCar(String model, int series) {
-        User user = (User) sessionFactory.getCurrentSession().createQuery("select user from Car where(model=:model)and(series=:series)")
-                .setParameter("model", model)
-                .setParameter("series", series).getSingleResult();
-        System.out.println(user);
-        return user;
-    }
 }
