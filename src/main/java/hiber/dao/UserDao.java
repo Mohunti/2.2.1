@@ -1,7 +1,8 @@
 package hiber.dao;
 
 import hiber.model.User;
-
+import hiber.model.Car;
+import javax.sql.rowset.CachedRowSet;
 import java.util.List;
 
 public interface UserDao {

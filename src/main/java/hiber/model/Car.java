@@ -6,12 +6,11 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "cars")
+@Table(name = "car")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "car_id")
-    private Long id;
+    private long id;
 
     @Column(name= "model")
     private String model;
@@ -52,5 +51,20 @@ public class Car {
 
     public void setSeries(int series) {
         this.series = series;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    @Override
+    public String toString() {
+        return "Car{" +
+                "model='" + model + '\'' +
+                ", series=" + series +
+                '}';
     }
 }

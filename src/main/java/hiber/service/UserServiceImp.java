@@ -16,9 +16,6 @@ import java.util.List;
 public class UserServiceImp implements UserService {
 
     @Autowired
-    private SessionFactory sessionFactory;
-
-    @Autowired
     private UserDao userDao;
 
     @Transactional(readOnly = true)
